@@ -98,6 +98,7 @@ cc_prebuilt_library_shared {
     strip: {
         none: true,
     },
+    check_elf_files: false,
     target: {
         android_arm64: {
             srcs: [
@@ -121,6 +122,7 @@ cc_prebuilt_library_shared {
     strip: {
         none: true,
     },
+    check_elf_files: false,
     target: {
         android_arm64: {
             srcs: [
@@ -144,6 +146,7 @@ cc_prebuilt_library_shared {
     strip: {
         none: true,
     },
+    check_elf_files: false,
     target: {
         android_arm64: {
             srcs: [
@@ -167,6 +170,7 @@ cc_prebuilt_library_shared {
     strip: {
         none: true,
     },
+    check_elf_files: false,
     target: {
         android_arm64: {
             srcs: [
@@ -190,6 +194,7 @@ cc_prebuilt_library_shared {
     strip: {
         none: true,
     },
+    check_elf_files: false,
     target: {
         android_arm64: {
             srcs: [
@@ -216,6 +221,7 @@ cc_prebuilt_library_shared {
     strip: {
         none: true,
     },
+    check_elf_files: false,
     target: {
         android_arm64: {
             srcs: [
@@ -237,6 +243,7 @@ cc_prebuilt_library_shared {
     strip: {
         none: true,
     },
+    check_elf_files: false,
     target: {
         android_arm64: {
             srcs: [
@@ -263,6 +270,7 @@ cc_prebuilt_binary {
     strip: {
         none: true,
     },
+    check_elf_files: false,
     target: {
         android_arm64: {
             srcs: [
