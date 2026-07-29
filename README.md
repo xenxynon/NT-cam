@@ -4,15 +4,19 @@ This repository contains the standalone, path-independent camera stack required 
 
 ## Repo Structure
 
-Modelled after `NullDebris/hardware_dolby`, this repository has a clean, root-level layout:
-- `ntcam.mk`: The main entry makefile that handles all packages, copy files, sepolicy directories, and properties.
-- `Android.bp`: Declarations for Soong prebuilts (libraries/APKs) and the camera client shim.
-- `configs/`: Standalone configurations, permissions allowlists, vintf manifests, and the camera init script (`init.ntcam.rc`).
-- `sepolicy/`: The private/public/vendor SELinux rules.
+Modelled after `NullDebris/hardware_dolby` and standard LineageOS extract tools, this repository has a clean, root-level layout:
+- `ntcam.mk`: Main entry makefile that handles all properties, SEPolicy directories, copy files, and inherits `ntcam-vendor.mk`.
+- `extract-files.sh`: LineageOS-style extraction script (`./extract-files.sh </path/to/stock/dump>`) that extracts blobs from stock dump, applies patches, and runs `setup-makefiles.sh`.
+- `setup-makefiles.sh`: Script that parses `proprietary-files.txt` and auto-generates `Android.bp` and `ntcam-vendor.mk`.
+- `proprietary-files.txt`: Master list of proprietary blobs, APKs, shared libraries, VINTF fragments, and camera assets.
+- `Android.bp`: Declarations for Soong prebuilts (libraries/APKs) and `libcamera_client_shim`.
+- `ntcam-vendor.mk`: Auto-generated makefile declaring `PRODUCT_PACKAGES` and `PRODUCT_COPY_FILES`.
+- `configs/`: Standalone configurations, permissions allowlists (`privapp-permissions-NTCamera.xml`), task profiles, and `init.ntcam.rc`.
+- `sepolicy/`: Private, public, and vendor SELinux rules.
 - `shim/`: Source code for `libcamera_client_shim` (exports `IOfflineProcService::asInterface`).
 - `offlineproc/`: Native pass-through daemon (`android.hardware.offline_proc@1.0-service.nothing`) registered as `"media.offline"` to handle NTCAM post-processing binder calls.
 - `nothing-fwk/`: Helper classes for Nothing-specific features.
-- `proprietary/`: Proprietary binaries, libraries, resources, and APKs (`NTCamera.apk`, `NothingProxy.apk`, `libofflineproc_jni.so`).
+- `proprietary/`: Proprietary binaries, libraries, resources, VINTF manifests, perflock configs, and APKs (`NTCamera.apk`, `NothingProxy.apk`, `libofflineproc_jni.so`).
 
 ## Integration
 
@@ -36,9 +40,10 @@ $(call inherit-product, hardware/nothing/camera/ntcam.mk)
 > $(call inherit-product, $(NTCAM_PATH)/ntcam.mk)
 > ```
 
+## Included Fixes & Compliances
 
-## Features & Compliances
-
-- **Clean Structure**: No bloated device or vendor directory duplication.
-- **SELinux Neverallows**: Satisfies Google's Treble isolation. `/data/misc/cameraserver` is mapped to `camera_data_file` and accessed via the system-data violators bypass.
-- **Standalone Init**: Dynamic cpuset (`ntcam-algo`) creation and camera calibration copies are moved to a separate `init.ntcam.rc` which is automatically loaded by init, leaving the main `init.asteroids.rc` untouched.
+1. **VINTF Manifest (`INtCamService/default`)**: Bundled `/vendor/etc/vintf/manifest/vendor.noth.hardware.camera-service.xml` into `PRODUCT_PACKAGES` to resolve RescueParty 3x boot loops.
+2. **Post-Processing Queue Bottleneck**: `MaxRequestQueueDepth=6` configured in `vendor/etc/camera/ntcamoverridesettings.txt` to prevent `SIGSEGV` in `libntofflinepostproc.so`.
+3. **MediaProvider Pending Item Save**: Added privileged storage permissions (`WRITE_MEDIA_STORAGE`, `MANAGE_EXTERNAL_STORAGE`, `ACCESS_MEDIA_LOCATION`, `MANAGE_MEDIA`) to `privapp-permissions-NTCamera.xml`.
+4. **Camera Perflock Frequencies**: Added `ntcamperflocksettings.json` to boost CPU/GPU frequencies during multi-frame captures.
+5. **Clean LineageOS Extraction Tooling**: `./extract-files.sh` and `./setup-makefiles.sh` automatically manage `proprietary-files.txt` and generate `Android.bp` and `ntcam-vendor.mk`.
