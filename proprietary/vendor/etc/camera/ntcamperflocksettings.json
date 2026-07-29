@@ -1,0 +1,9 @@
+{
+  "PerflockSettings": {
+    "CaptureBoost": {
+      "CpuMinFreq": 2400000,
+      "GpuMinFreq": 800000,
+      "TimeoutMs": 3000
+    }
+  }
+}

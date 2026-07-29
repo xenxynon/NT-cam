@@ -33,7 +33,9 @@ vendor/lib64/vendor.qti.hardware.camera.offlinecamera-V1-ndk.so
 vendor/lib64/libprotobuf-cpp-full-21.7.so
 vendor/lib64/libprotobuf-cpp-lite-21.7.so
 
-# Vendor Camera Fonts
+# Vendor Camera Fonts & Configs
 vendor/etc/camera/NdotFont/Ndot-55.otf
 vendor/etc/camera/Robotofont/Roboto-55.ttf
 vendor/etc/camera/SansCJKFont/NotoSansCJK.ttc
+vendor/etc/camera/ntcamoverridesettings.txt
+vendor/etc/camera/ntcamperflocksettings.json

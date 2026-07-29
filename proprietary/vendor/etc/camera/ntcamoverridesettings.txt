@@ -1,0 +1,2 @@
+# NTCAM Vendor Override Settings
+MaxRequestQueueDepth=6
