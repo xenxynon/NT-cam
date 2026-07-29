@@ -230,7 +230,6 @@ cc_prebuilt_binary {
 
 vintf_fragment {
     name: "vendor.noth.hardware.camera-service.xml",
-    filename: "vendor.noth.hardware.camera-service.xml",
     src: "proprietary/vendor/etc/vintf/manifest/vendor.noth.hardware.camera-service.xml",
     vendor: true,
 }
