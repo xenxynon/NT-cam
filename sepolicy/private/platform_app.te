@@ -1,8 +1,6 @@
 get_prop(platform_app, vendor_nothing_feature_prop)
 allow platform_app vendor_hal_noth_camera_service:service_manager find;
 
-# Allow NTCamera to load Qualcomm HTP (Hexagon Tensor Processor) neural network
-# library from vendor partition for AI/ML camera post-processing acceleration
-# (HDR+, Night mode, computational photography). Scoped to file read only.
-allow platform_app vendor_file:file { read getattr open };
-allow platform_app vendor_file:dir { read getattr open search };
+# Allow NTCamera to read camera runtime configuration properties
+# (vendor.camera.*, vendor.picture.*) — these are non-sensitive tuning values.
+get_prop(platform_app, vendor_camera_config_prop)

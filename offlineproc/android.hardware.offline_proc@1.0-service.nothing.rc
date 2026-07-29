@@ -1,0 +1,8 @@
+service offline_proc /vendor/bin/hw/android.hardware.offline_proc@1.0-service.nothing
+    class hal
+    user cameraserver
+    group system camera graphics media
+    capabilities BLOCK_SUSPEND
+    ioprio rt 4
+    task_profiles CameraServiceCapacity MaxPerformance
+    oneshot

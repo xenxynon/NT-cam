@@ -8,5 +8,6 @@
     glyph_app
     sltntc
     vendor_nothing_feature_prop
+    vendor_camera_config_prop
     device_extras
     vendor_hal_noth_camera_service))

@@ -56,6 +56,8 @@ hal_client_domain(hal_nt_camera, hal_graphics_allocator);
 
 get_prop(hal_nt_camera, camera_config_prop);
 get_prop(hal_nt_camera, vendor_nothing_feature_prop);
+get_prop(hal_nt_camera, vendor_camera_config_prop);
+
 
 # ADSP/CDSP access rules matching standard client patterns allowed by QCOM policy
 allow hal_nt_camera vendor_xdsp_device:chr_file { ioctl read getattr lock map open watch watch_reads };

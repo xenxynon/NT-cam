@@ -1,0 +1,39 @@
+#
+# Copyright (C) 2025 The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+# Proprietary blob extraction list for Nothing Camera (NTCAM)
+#
+
+# APKs
+system_ext/priv-app/NTCamera/NTCamera.apk
+system_ext/app/NothingProxy/NothingProxy.apk
+system_ext/priv-app/NothingExperience/NothingExperience.apk
+system_ext/etc/permissions/privapp-permissions-NothingExperience.xml
+
+# System Ext Libraries & JNI
+system_ext/lib64/libofflineproc_jni.so
+
+# Vendor Binaries & Init
+vendor/bin/hw/vendor.noth.hardware.camera-service
+vendor/etc/init/vendor.noth.hardware.camera-service.rc
+vendor/etc/vintf/manifest/vendor.noth.hardware.camera-service.xml
+
+# Vendor HAL Libraries & Dependencies
+vendor/lib64/vendor.noth.hardware.camera-V1-ndk.so
+vendor/lib64/vendor.noth.hardware.camera-service-impl.so
+vendor/lib64/libarcsoft_hdr_detection.so
+vendor/lib64/libarcsoft_mf_superresolution.so
+vendor/lib64/libcpion.so
+vendor/lib64/libtrustedapploader.so
+vendor/lib64/libntofflinepostproc.so
+vendor/lib64/liboemcrypto.so
+vendor/lib64/vendor.qti.hardware.camera.postproc@1.0.so
+vendor/lib64/vendor.qti.hardware.camera.offlinecamera-V1-ndk.so
+vendor/lib64/libprotobuf-cpp-full-21.7.so
+vendor/lib64/libprotobuf-cpp-lite-21.7.so
+
+# Vendor Camera Fonts
+vendor/etc/camera/NdotFont/Ndot-55.otf
+vendor/etc/camera/Robotofont/Roboto-55.ttf
+vendor/etc/camera/SansCJKFont/NotoSansCJK.ttc

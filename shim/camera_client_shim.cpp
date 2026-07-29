@@ -2,6 +2,7 @@
 #include <utils/StrongPointer.h>
 #include <utils/RefBase.h>
 #include <binder/IBinder.h>
+#include "../offlineproc/IOfflineProcService.h"
 
 struct native_handle;
 
@@ -40,14 +41,7 @@ OfflineParameters::OfflineParameters(
     std::vector<int> d
 ) {}
 
-class IOfflineProcService : public virtual RefBase {
-public:
-    static sp<IOfflineProcService> asInterface(const sp<IBinder>& binder);
-};
-
-sp<IOfflineProcService> IOfflineProcService::asInterface(const sp<IBinder>& binder) {
-    return nullptr;
-}
+// IOfflineProcService::asInterface is implemented by IMPLEMENT_META_INTERFACE in IOfflineProcService.cpp
 
 } // namespace hardware
 } // namespace android

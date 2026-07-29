@@ -1,0 +1,17 @@
+# SELinux policy for the OfflineProc pass-through service
+# This service registers as "media.offline" in servicemanager and
+# accepts capture submission calls from libofflineproc_jni.so
+
+init_daemon_domain(offline_proc_service);
+binder_use(offline_proc_service);
+binder_call(offline_proc_service, servicemanager);
+add_service(offline_proc_service, offline_proc_binder_service);
+
+# Allow the service to talk back to NTCamera (platform_app / system_ext_app)
+binder_call(offline_proc_service, platform_app);
+binder_call(platform_app, offline_proc_service);
+binder_call(offline_proc_service, priv_app);
+binder_call(priv_app, offline_proc_service);
+
+allow offline_proc_service ion_device:chr_file rw_file_perms;
+allow offline_proc_service tmpfs:file { read write map };

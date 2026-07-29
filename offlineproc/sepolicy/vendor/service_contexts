@@ -1,0 +1,2 @@
+# Service contexts for the offline proc pass-through service
+media.offline                              u:object_r:offline_proc_binder_service:s0

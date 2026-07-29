@@ -1,38 +1,33 @@
-# Nothing Camera (NTCAM) Port Makefile
+#
+# Copyright (C) 2025 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
+#
+# Main integrated entry makefile for Nothing Camera (NTCAM) port
+#
 
-# Path to the camera port directory (can be overridden in device mk)
 NTCAM_PATH ?= hardware/nothing/camera
 
-# Soong Namespace
+# Soong Namespaces
 PRODUCT_SOONG_NAMESPACES += $(NTCAM_PATH)
+
+# Inherit auto-generated vendor makefile
+$(call inherit-product-if-exists, $(NTCAM_PATH)/ntcam-vendor.mk)
 
 # SEPolicy
 BOARD_VENDOR_SEPOLICY_DIRS += $(NTCAM_PATH)/sepolicy/vendor
+BOARD_VENDOR_SEPOLICY_DIRS += $(NTCAM_PATH)/offlineproc/sepolicy/vendor
 SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(NTCAM_PATH)/sepolicy/public
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(NTCAM_PATH)/offlineproc/sepolicy/public
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(NTCAM_PATH)/sepolicy/private
 
-# Packages
-PRODUCT_PACKAGES += \
-    libcamera_client_shim \
-    libarcsoft_hdr_detection \
-    libarcsoft_mf_superresolution \
-    libcpion \
-    libtrustedapploader \
-    libofflineproc_jni \
-    liboemcrypto \
-    vendor.noth.hardware.camera-V1-ndk \
-    vendor.noth.hardware.camera-service-impl \
-    vendor.noth.hardware.camera-service \
-    NothingProxy \
-    NothingExperience
+# System & Vendor Properties
+PRODUCT_VENDOR_PROPERTIES += \
+    persist.vendor.camera.privapp.list=com.nothing.camera \
+    vendor.camera.aux.packagelist=com.nothing.camera \
+    ro.camera.req_fps_range=30,30 \
+    persist.vendor.camera.physical.num=3
 
-# Include NTCamera if the prebuilt exists
-ifneq ($(wildcard $(NTCAM_PATH)/proprietary/system_ext/priv-app/NTCamera/NTCamera.apk),)
-PRODUCT_PACKAGES += NTCamera
-endif
-
-# Configuration permissions and allowlists
+# Configuration Permissions, Allowlists, Task Profiles & Init Scripts
 PRODUCT_COPY_FILES += \
     $(NTCAM_PATH)/configs/nothing-hiddenapi-package-allowlist.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/sysconfig/nothing-hiddenapi-package-allowlist.xml \
     $(NTCAM_PATH)/configs/privapp-permissions-NTCamera.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-NTCamera.xml \
@@ -40,9 +35,9 @@ PRODUCT_COPY_FILES += \
     $(NTCAM_PATH)/configs/linker.config.json:$(TARGET_COPY_OUT_VENDOR)/etc/linker.config.json \
     $(NTCAM_PATH)/configs/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json \
     $(NTCAM_PATH)/configs/init/init.ntcam.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.ntcam.rc \
-    $(NTCAM_PATH)/configs/vintf/framework_matrix_nothing.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/vintf/manifest/framework_matrix_nothing.xml
+    $(NTCAM_PATH)/proprietary/vendor/etc/init/vendor.noth.hardware.camera-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.noth.hardware.camera-service.rc
 
-# Proprietary camera configs, fonts, and assets copy rules
+# Camera Calibration, Fonts, and Assets Copy Rules
 PRODUCT_COPY_FILES += \
     $(NTCAM_PATH)/proprietary/system_ext/etc/permissions/privapp-permissions-NothingExperience.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-NothingExperience.xml \
     $(NTCAM_PATH)/proprietary/system_ext/framework/androidx.camera.extensions.impl.advanced.jar:$(TARGET_COPY_OUT_SYSTEM_EXT)/framework/androidx.camera.extensions.impl.advanced.jar \
@@ -72,19 +67,3 @@ PRODUCT_COPY_FILES += \
     $(NTCAM_PATH)/proprietary/vendor/etc/camera/vidhance_calibration_Plus:$(TARGET_COPY_OUT_VENDOR)/etc/camera/vidhance_calibration_Plus \
     $(NTCAM_PATH)/proprietary/odm/overlayfs_origin/base/etc/camera/camxoverridesettings.txt:$(TARGET_COPY_OUT_ODM)/overlayfs_origin/base/etc/camera/camxoverridesettings.txt \
     $(NTCAM_PATH)/proprietary/odm/overlayfs_origin/pro/etc/camera/camxoverridesettings.txt:$(TARGET_COPY_OUT_ODM)/overlayfs_origin/pro/etc/camera/camxoverridesettings.txt
-
-# Camera Filters (Copy entire directory content recursively)
-PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(NTCAM_PATH)/proprietary/vendor/etc/camera/filter,$(TARGET_COPY_OUT_VENDOR)/etc/camera/filter)
-
-# Framework Compatibility Matrix
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(NTCAM_PATH)/configs/vintf/framework_matrix_nothing.xml
-
-# Properties
-PRODUCT_VENDOR_PROPERTIES += \
-    camera.disable_zsl_mode=1 \
-    ro.camera.enableCamera1MaxZsl=1 \
-    ro.camera.disableHeicUltraHDR=true \
-    ro.vendor.nothing.feature.base=0x600800001004458438124a040106b4247b97ffL \
-    ro.vendor.nothing.feature.diff.device.Asteroids=0x240001a38fc01acc038d140ad44002d0842080L \
-    ro.vendor.nothing.feature.diff.plus.Asteroids=0x4000000000000000000000L \
-    ro.vendor.nothing.feature.diff.product.Asteroids=0x0

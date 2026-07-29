@@ -1,11 +1,2 @@
-# Fingerprint
-type fingerprint_device, dev_type;
-
-# Lights
-type led_device, dev_type;
-
-# Vibrator
-type aac_richtap_device, dev_type;
-
-# Nothing Camera
+# Nothing Camera Device
 type nt_cam_device, dev_type;

@@ -9,9 +9,10 @@ Modelled after `NullDebris/hardware_dolby`, this repository has a clean, root-le
 - `Android.bp`: Declarations for Soong prebuilts (libraries/APKs) and the camera client shim.
 - `configs/`: Standalone configurations, permissions allowlists, vintf manifests, and the camera init script (`init.ntcam.rc`).
 - `sepolicy/`: The private/public/vendor SELinux rules.
-- `shim/`: The source code for the camera client JNI shim.
+- `shim/`: Source code for `libcamera_client_shim` (exports `IOfflineProcService::asInterface`).
+- `offlineproc/`: Native pass-through daemon (`android.hardware.offline_proc@1.0-service.nothing`) registered as `"media.offline"` to handle NTCAM post-processing binder calls.
 - `nothing-fwk/`: Helper classes for Nothing-specific features.
-- `proprietary/`: The proprietary binaries, libraries, resources, and APKs (with `NTCamera.apk` and `NothingProxy.apk` bytecode-patched for AOSP compatibility, and `NTCamera.apk` tracked under Git LFS).
+- `proprietary/`: Proprietary binaries, libraries, resources, and APKs (`NTCamera.apk`, `NothingProxy.apk`, `libofflineproc_jni.so`).
 
 ## Integration
 

@@ -5,4 +5,7 @@
 (typeattribute new_objects)
 (typeattributeset new_objects
   ( new_objects
-    system_data_file_202504))
+    system_data_file_202504
+    offline_proc_binder_service
+    offline_proc_service
+    offline_proc_service_exec))
