@@ -1,2 +1,4 @@
 # NTCAM Vendor Override Settings
+NumberOfThread=4
 MaxRequestQueueDepth=6
+
