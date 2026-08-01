@@ -62,8 +62,14 @@ get_prop(hal_nt_camera, vendor_camera_config_prop);
 # ADSP/CDSP access rules matching standard client patterns allowed by QCOM policy
 allow hal_nt_camera vendor_xdsp_device:chr_file { ioctl read getattr lock map open watch watch_reads };
 allow hal_nt_camera vendor_qdsp_device:chr_file { ioctl read getattr lock map open watch watch_reads };
-allow hal_nt_camera adsprpcd_file:dir search;
+r_dir_file(hal_nt_camera, adsprpcd_file)
+allow hal_nt_camera adsprpcd_file:file r_file_perms;
 
 # SELinux denials from camera HAL (hal_camera_default via typealias hal_nt_camera)
 
 allow hal_nt_camera vendor_ntf_file:file r_file_perms;
+
+# walog/sat: Nothing UFS write-ahead log writes session state to /data/misc/user
+# AOSP only grants system_app; hal_nt_camera (vendor) needs explicit grant.
+allow hal_nt_camera misc_user_data_file:dir { search getattr read write add_name create };
+allow hal_nt_camera misc_user_data_file:file { create open read write getattr setattr lock };
