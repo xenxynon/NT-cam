@@ -1,0 +1,17 @@
+// Camera Client Shim
+cc_library_shared {
+    name: "libcamera_client_shim",
+    srcs: [
+        "camera_client_shim.cpp",
+        "offlineproc/IOfflineProcService.cpp",
+    ],
+    shared_libs: [
+        "libutils",
+        "liblog",
+        "libbinder",
+    ],
+    
+subdirs = [
+    "nothing-fwk",
+    "offlineproc",
+]

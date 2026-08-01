@@ -21,20 +21,20 @@ Modelled after `NullDebris/hardware_dolby` and standard LineageOS extract tools,
 ## Integration
 
 ### 1. Placement
-Clone this repository into your ROM source tree (e.g., under `hardware/nothing/camera`):
+Clone this repository into your ROM source tree (e.g., under `vendor/nothing/camera`):
 
 ```bash
-git clone git@github.com:fuzailmansuri/NT-cam.git hardware/nothing/camera
+git clone git@github.com:fuzailmansuri/NT-cam.git vendor/nothing/camera
 ```
 
 ### 2. Makefile Inheritance
 Inherit the configuration in your device's main product makefile (e.g., `device/nothing/asteroids/aosp_asteroids.mk` or equivalent):
 
 ```makefile
-$(call inherit-product, hardware/nothing/camera/ntcam.mk)
+$(call inherit-product, vendor/nothing/camera/ntcam.mk)
 ```
 
-> **Note**: If you clone this repository to a path other than `hardware/nothing/camera`, define the `NTCAM_PATH` variable before inheriting:
+> **Note**: If you clone this repository to a path other than `vendor/nothing/camera`, define the `NTCAM_PATH` variable before inheriting:
 > ```makefile
 > NTCAM_PATH := vendor/nothing/camera
 > $(call inherit-product, $(NTCAM_PATH)/ntcam.mk)

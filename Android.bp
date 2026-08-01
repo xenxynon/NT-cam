@@ -1,39 +1,13 @@
 //
-// Copyright (C) 2025 The LineageOS Project
-// SPDX-License-Identifier: Apache-2.0
-//
-// Auto-generated Soong build declarations for NTCAM port
+// Automatically generated file. DO NOT MODIFY
 //
 
 soong_namespace {
     imports: [
-        "hardware/nothing",
         "vendor/nothing/asteroids",
+        "hardware/nothing",
     ],
 }
-
-// Camera Client Shim
-cc_library_shared {
-    name: "libcamera_client_shim",
-    srcs: [
-        "shim/camera_client_shim.cpp",
-        "offlineproc/IOfflineProcService.cpp",
-    ],
-    shared_libs: [
-        "libutils",
-        "liblog",
-        "libbinder",
-    ],
-    system_ext_specific: true,
-}
-
-// Subdirectories
-subdirs = [
-    "nothing-fwk",
-    "offlineproc",
-]
-
-// Prebuilt Libraries & Binaries
 
 cc_prebuilt_library_shared {
     name: "libarcsoft_hdr_detection",
@@ -41,16 +15,17 @@ cc_prebuilt_library_shared {
     strip: {
         none: true,
     },
-    check_elf_files: false,
     target: {
         android_arm64: {
             srcs: [
                 "proprietary/vendor/lib64/libarcsoft_hdr_detection.so",
             ],
             shared_libs: [
+                "libmpbase",
                 "liblog",
-                "libutils",
-                "libcutils",
+                "libc",
+                "libm",
+                "libdl",
             ],
         },
     },
@@ -65,16 +40,17 @@ cc_prebuilt_library_shared {
     strip: {
         none: true,
     },
-    check_elf_files: false,
     target: {
         android_arm64: {
             srcs: [
                 "proprietary/vendor/lib64/libarcsoft_mf_superresolution.so",
             ],
             shared_libs: [
+                "libmpbase",
                 "liblog",
-                "libutils",
-                "libcutils",
+                "libc",
+                "libm",
+                "libdl",
             ],
         },
     },
@@ -89,7 +65,6 @@ cc_prebuilt_library_shared {
     strip: {
         none: true,
     },
-    check_elf_files: false,
     target: {
         android_arm64: {
             srcs: [
@@ -97,8 +72,155 @@ cc_prebuilt_library_shared {
             ],
             shared_libs: [
                 "liblog",
-                "libutils",
+                "libdmabufheap",
+                "libvmmem",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libnelib",
+    owner: "nothing",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libnelib.so",
+            ],
+            shared_libs: [
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libntofflinepostproc",
+    owner: "nothing",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libntofflinepostproc.so",
+            ],
+            shared_libs: [
+                "libc++",
                 "libcutils",
+                "liblog",
+                "libutils",
+                "vendor.qti.hardware.camera.postproc@1.0",
+                "libbase",
+                "libhidlbase",
+                "libbinder_ndk",
+                "libcamera_metadata",
+                "libntcamcommonutils",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "liboemcrypto",
+    owner: "nothing",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/liboemcrypto.so",
+            ],
+            shared_libs: [
+                "libutils",
+                "liblog",
+                "libQSEEComAPI",
+                "libcpion",
+                "libminkdescriptor",
+                "libcutils",
+                "libtrustedapploader",
+                "vendor.qti.hardware.display.config-V7-ndk",
+                "libpower",
+                "libcrypto",
+                "libbinder_ndk",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libprotobuf-cpp-full-21.7",
+    owner: "nothing",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libprotobuf-cpp-full-21.7.so",
+            ],
+            shared_libs: [
+                "libz",
+                "liblog",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libprotobuf-cpp-lite-21.7",
+    owner: "nothing",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libprotobuf-cpp-lite-21.7.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
             ],
         },
     },
@@ -113,7 +235,6 @@ cc_prebuilt_library_shared {
     strip: {
         none: true,
     },
-    check_elf_files: false,
     target: {
         android_arm64: {
             srcs: [
@@ -121,8 +242,13 @@ cc_prebuilt_library_shared {
             ],
             shared_libs: [
                 "liblog",
-                "libutils",
-                "libcutils",
+                "libminkdescriptor",
+                "libminksocket_vendor",
+                "libqcbor",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
             ],
         },
     },
@@ -130,74 +256,6 @@ cc_prebuilt_library_shared {
     prefer: true,
     soc_specific: true,
 }
-
-cc_prebuilt_library_shared {
-    name: "libofflineproc_jni",
-    owner: "nothing",
-    strip: {
-        none: true,
-    },
-    check_elf_files: false,
-    target: {
-        android_arm64: {
-            srcs: [
-                "proprietary/system_ext/lib64/libofflineproc_jni.so",
-            ],
-            shared_libs: [
-                "liblog",
-                "libutils",
-                "libcutils",
-                "libandroid",
-                "libnativewindow",
-                "libcamera_client_shim",
-            ],
-        },
-    },
-    compile_multilib: "64",
-    prefer: true,
-    system_ext_specific: true,
-}
-
-cc_prebuilt_library_shared {
-    name: "libnelib",
-    owner: "nothing",
-    strip: {
-        none: true,
-    },
-    check_elf_files: false,
-    target: {
-        android_arm64: {
-            srcs: [
-                "proprietary/system_ext/lib64/libnelib.so",
-            ],
-        },
-    },
-    compile_multilib: "64",
-    prefer: true,
-    system_ext_specific: true,
-}
-
-cc_prebuilt_library_shared {
-    name: "libnelib_vendor",
-    owner: "nothing",
-    strip: {
-        none: true,
-    },
-    check_elf_files: false,
-    target: {
-        android_arm64: {
-            srcs: [
-                "proprietary/vendor/lib64/libnelib.so",
-            ],
-        },
-    },
-    compile_multilib: "64",
-    prefer: true,
-    soc_specific: true,
-}
-
-
-
 
 cc_prebuilt_library_shared {
     name: "vendor.noth.hardware.camera-V1-ndk",
@@ -205,7 +263,6 @@ cc_prebuilt_library_shared {
     strip: {
         none: true,
     },
-    check_elf_files: false,
     target: {
         android_arm64: {
             srcs: [
@@ -213,6 +270,10 @@ cc_prebuilt_library_shared {
             ],
             shared_libs: [
                 "libbinder_ndk",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
             ],
         },
     },
@@ -227,19 +288,29 @@ cc_prebuilt_library_shared {
     strip: {
         none: true,
     },
-    check_elf_files: false,
     target: {
         android_arm64: {
             srcs: [
                 "proprietary/vendor/lib64/vendor.noth.hardware.camera-service-impl.so",
             ],
             shared_libs: [
-                "liblog",
-                "libutils",
+                "libui_shim",
+                "libc++",
                 "libcutils",
-                "libhardware",
+                "liblog",
+                "libsync",
                 "libcamera_metadata",
+                "libutils",
+                "libui",
+                "libbase",
+                "libhidlbase",
+                "libbinder_ndk",
+                "libntcamcore",
+                "libntcamcommonutils",
                 "vendor.noth.hardware.camera-V1-ndk",
+                "libc",
+                "libm",
+                "libdl",
             ],
         },
     },
@@ -248,47 +319,118 @@ cc_prebuilt_library_shared {
     soc_specific: true,
 }
 
-cc_prebuilt_binary {
-    name: "vendor.noth.hardware.camera-service",
+cc_prebuilt_library_shared {
+    name: "vendor.qti.hardware.camera.offlinecamera-V1-ndk",
     owner: "nothing",
     strip: {
         none: true,
     },
-    check_elf_files: false,
     target: {
         android_arm64: {
             srcs: [
-                "proprietary/vendor/bin/hw/vendor.noth.hardware.camera-service",
+                "proprietary/vendor/lib64/vendor.qti.hardware.camera.offlinecamera-V1-ndk.so",
             ],
             shared_libs: [
-                "liblog",
-                "libutils",
-                "libcutils",
                 "libbinder_ndk",
-                "vendor.noth.hardware.camera-service-impl",
-                "vendor.noth.hardware.camera-V1-ndk",
+                "android.hardware.camera.device-V2-ndk",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
             ],
         },
     },
     compile_multilib: "64",
     prefer: true,
     soc_specific: true,
-    relative_install_path: "hw",
-    init_rc: [
-        "proprietary/vendor/etc/init/vendor.noth.hardware.camera-service.rc",
-    ],
-    vintf_fragments: [
-        "proprietary/vendor/etc/vintf/manifest/vendor.noth.hardware.camera-service.xml",
-    ],
 }
 
-vintf_fragment {
-    name: "vendor.noth.hardware.camera-service.xml",
-    src: "proprietary/vendor/etc/vintf/manifest/vendor.noth.hardware.camera-service.xml",
-    vendor: true,
+cc_prebuilt_library_shared {
+    name: "vendor.qti.hardware.camera.postproc@1.0",
+    owner: "nothing",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/vendor.qti.hardware.camera.postproc@1.0.so",
+            ],
+            shared_libs: [
+                "libhidlbase",
+                "liblog",
+                "libutils",
+                "libcutils",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    soc_specific: true,
 }
 
-// Applications
+cc_prebuilt_library_shared {
+    name: "libnelib",
+    owner: "nothing",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libnelib.so",
+            ],
+            shared_libs: [
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libofflineproc_jni",
+    owner: "nothing",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libofflineproc_jni.so",
+            ],
+            shared_libs: [
+                "libcamera_client_shim",
+                "libandroid_runtime",
+                "libutils",
+                "libbinder",
+                "libcutils",
+                "liblog",
+                "libui",
+                "libcamera_client",
+                "libvndksupport",
+                "libnativewindow",
+                "libcamera_metadata",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
 
 android_app_import {
     name: "NothingProxy",
@@ -298,6 +440,18 @@ android_app_import {
     dex_preopt: {
         enabled: false,
     },
+    system_ext_specific: true,
+}
+
+android_app_import {
+    name: "NTCamera",
+    owner: "nothing",
+    apk: "proprietary/system_ext/priv-app/NTCamera/NTCamera.apk",
+    certificate: "platform",
+    dex_preopt: {
+        enabled: false,
+    },
+    privileged: true,
     system_ext_specific: true,
 }
 
@@ -313,14 +467,45 @@ android_app_import {
     system_ext_specific: true,
 }
 
-android_app_import {
-    name: "NTCamera",
+prebuilt_etc_xml {
+    name: "vendor.noth.hardware.camera-service.xml",
     owner: "nothing",
-    apk: "proprietary/system_ext/priv-app/NTCamera/NTCamera.apk",
-    certificate: "platform",
-    dex_preopt: {
-        enabled: false,
+    src: "proprietary/vendor/etc/vintf/manifest/vendor.noth.hardware.camera-service.xml",
+    filename_from_src: true,
+    sub_dir: "vintf/manifest",
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
+    name: "vendor.noth.hardware.camera-service",
+    owner: "nothing",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/bin/hw/vendor.noth.hardware.camera-service",
+            ],
+            shared_libs: [
+                "libc++",
+                "libcutils",
+                "liblog",
+                "libsync",
+                "libui",
+                "libbase",
+                "libhidlbase",
+                "libbinder_ndk",
+                "vendor.noth.hardware.camera-service-impl",
+                "vendor.noth.hardware.camera-V1-ndk",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
     },
-    privileged: true,
-    system_ext_specific: true,
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "hw",
+    soc_specific: true,
 }
