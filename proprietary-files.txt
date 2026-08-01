@@ -41,3 +41,12 @@ vendor/etc/camera/Robotofont/Roboto-55.ttf
 vendor/etc/camera/SansCJKFont/NotoSansCJK.ttc
 vendor/etc/camera/ntcamoverridesettings.txt
 vendor/etc/camera/ntcamperflocksettings.json
+
+# Configs
+system_ext/etc/sysconfig/nothing-hiddenapi-package-allowlist.xml
+system_ext/etc/permissions/privapp-permissions-NTCamera.xml
+system_ext/etc/permissions/privapp-permissions-NothingProxy.xml
+vendor/etc/linker.config.json
+vendor/etc/task_profiles.json
+vendor/etc/init/init.ntcam.rc
+vendor/etc/init/vendor.noth.hardware.camera-service.rc

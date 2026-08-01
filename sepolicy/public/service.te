@@ -1,1 +1,4 @@
 type vendor_hal_noth_camera_service, service_manager_type;
+
+# Service context for the offline proc binder service ("media.offline")
+type offline_proc_binder_service, service_manager_type;

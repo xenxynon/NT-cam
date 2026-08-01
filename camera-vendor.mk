@@ -6,13 +6,19 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/nothing/camera
 
 PRODUCT_COPY_FILES += \
+    vendor/nothing/camera/proprietary/system_ext/etc/permissions/privapp-permissions-NTCamera.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-NTCamera.xml \
     vendor/nothing/camera/proprietary/system_ext/etc/permissions/privapp-permissions-NothingExperience.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-NothingExperience.xml \
+    vendor/nothing/camera/proprietary/system_ext/etc/permissions/privapp-permissions-NothingProxy.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-NothingProxy.xml \
+    vendor/nothing/camera/proprietary/system_ext/etc/sysconfig/nothing-hiddenapi-package-allowlist.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/sysconfig/nothing-hiddenapi-package-allowlist.xml \
     vendor/nothing/camera/proprietary/vendor/etc/camera/NdotFont/Ndot-55.otf:$(TARGET_COPY_OUT_VENDOR)/etc/camera/NdotFont/Ndot-55.otf \
     vendor/nothing/camera/proprietary/vendor/etc/camera/Robotofont/Roboto-55.ttf:$(TARGET_COPY_OUT_VENDOR)/etc/camera/Robotofont/Roboto-55.ttf \
     vendor/nothing/camera/proprietary/vendor/etc/camera/SansCJKFont/NotoSansCJK.ttc:$(TARGET_COPY_OUT_VENDOR)/etc/camera/SansCJKFont/NotoSansCJK.ttc \
     vendor/nothing/camera/proprietary/vendor/etc/camera/ntcamoverridesettings.txt:$(TARGET_COPY_OUT_VENDOR)/etc/camera/ntcamoverridesettings.txt \
     vendor/nothing/camera/proprietary/vendor/etc/camera/ntcamperflocksettings.json:$(TARGET_COPY_OUT_VENDOR)/etc/camera/ntcamperflocksettings.json \
-    vendor/nothing/camera/proprietary/vendor/etc/init/vendor.noth.hardware.camera-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.noth.hardware.camera-service.rc
+    vendor/nothing/camera/proprietary/vendor/etc/init/init.ntcam.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.ntcam.rc \
+    vendor/nothing/camera/proprietary/vendor/etc/init/vendor.noth.hardware.camera-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.noth.hardware.camera-service.rc \
+    vendor/nothing/camera/proprietary/vendor/etc/linker.config.json:$(TARGET_COPY_OUT_VENDOR)/etc/linker.config.json \
+    vendor/nothing/camera/proprietary/vendor/etc/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
 
 PRODUCT_PACKAGES += \
     libarcsoft_hdr_detection \

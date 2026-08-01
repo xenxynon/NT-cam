@@ -13,3 +13,6 @@ vendor.qti.qhcp.IQHDC/default                          u:object_r:vendor_hal_qms
 
 # Sensors
 vendor.noth.hardware.sensor.sensor_extension.ISensorExtension/default    u:object_r:hal_sensors_service:s0
+
+# Service contexts for the offline proc pass-through service
+media.offline                              u:object_r:offline_proc_binder_service:s0
