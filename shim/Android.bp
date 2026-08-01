@@ -3,12 +3,13 @@ cc_library_shared {
     name: "libcamera_client_shim",
     srcs: [
         "camera_client_shim.cpp",
-        "offlineproc/IOfflineProcService.cpp",
     ],
     shared_libs: [
         "libutils",
         "liblog",
         "libbinder",
+        "android.hardware.offline_proc@1.0-service.nothing",
+        "vendor.qti.hardware.camera.postproc@1.0-service.nothing",
     ],
     
 subdirs = [
