@@ -1,0 +1,14 @@
+<manifest version="1.0" type="device">
+    <!-- Standalone postprocservice daemon for libntofflinepostproc.so.
+         libntofflinepostproc calls IPostProcService::getService("postprocservice").
+         This manifest entry allows VINTF to satisfy that query. -->
+    <hal format="hidl">
+        <name>vendor.qti.hardware.camera.postproc</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IPostProcService</name>
+            <instance>postprocservice</instance>
+        </interface>
+    </hal>
+</manifest>

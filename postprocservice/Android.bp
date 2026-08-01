@@ -1,0 +1,25 @@
+cc_binary {
+    name: "vendor.qti.hardware.camera.postproc@1.0-service.nothing",
+    relative_install_path: "hw",
+    defaults: ["hidl_defaults"],
+    vendor: true,
+    init_rc: ["vendor.qti.hardware.camera.postproc@1.0-service.nothing.rc"],
+    vintf_fragments: ["vendor.qti.hardware.camera.postproc@1.0-service.nothing.xml"],
+
+    srcs: ["main.cpp"],
+
+    shared_libs: [
+        "liblog",
+        "libutils",
+        "libhidlbase",
+        // The impl .so exports RegisterIPostProcService()
+        "vendor.qti.hardware.camera.postproc@1.0-service-impl",
+        // HIDL interface stubs
+        "vendor.qti.hardware.camera.postproc@1.0",
+    ],
+
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+}

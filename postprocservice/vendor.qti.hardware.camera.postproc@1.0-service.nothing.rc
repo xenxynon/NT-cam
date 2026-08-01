@@ -1,0 +1,12 @@
+service vendor.qti.camera.postprocservice /vendor/bin/hw/vendor.qti.hardware.camera.postproc@1.0-service.nothing
+    class hal
+    user cameraserver
+    group audio camera input drmrpc oem_2907 oem_2912 wakelock system graphics
+    ioprio rt 4
+    capabilities SYS_NICE BLOCK_SUSPEND
+    task_profiles CameraServiceCapacity HighPerformance
+    setenv ADSP_LIBRARY_PATH "/vendor/lib/rfsa/adsp;/vendor/dsp/cdsp;/vendor/dsp/adsp;/vendor/lib64/rfs/dsp"
+    setenv CDSP_LIBRARY_PATH "/vendor/lib/rfsa/adsp;/vendor/dsp/cdsp;/vendor/dsp/adsp;/vendor/lib64/rfs/dsp"
+    setenv DSP_LIBRARY_PATH "/vendor/lib/rfsa/adsp;/vendor/dsp/cdsp;/vendor/dsp/adsp;/vendor/lib64/rfs/dsp"
+    setenv overrideEnablePostProcHwInit "0"
+    setenv offlinePostProcDeviceOpen "0"
