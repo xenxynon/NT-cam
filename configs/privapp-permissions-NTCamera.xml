@@ -14,6 +14,7 @@
         <permission name="android.permission.CONTROL_DEVICE_LIGHTS"/>
         <permission name="android.permission.DEVICE_POWER"/>
         <permission name="android.permission.SYSTEM_CAMERA"/>
+        <permission name="android.permission.DUMP"/>
         <permission name="mediatek.permission.ACCESS_APU_SYS"/>
         <permission name="android.permission.STATUS_BAR"/>
         <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
