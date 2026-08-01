@@ -35,19 +35,19 @@ PRODUCT_PACKAGES += \
     libarcsoft_mf_superresolution \
     libcpion \
     libtrustedapploader \
+    libnelib \
+    libnelib_vendor \
     libofflineproc_jni \
     vendor.noth.hardware.camera-V1-ndk \
     vendor.noth.hardware.camera-service-impl \
     vendor.noth.hardware.camera-service \
     vendor.noth.hardware.camera-service.xml \
     android.hardware.offline_proc@1.0-service.nothing \
-    NothingProxy \
     NothingExperience \
     NTCamera
 
 PRODUCT_COPY_FILES += \
     $(NTCAM_PATH)/proprietary/system_ext/etc/permissions/privapp-permissions-NothingExperience.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-NothingExperience.xml \
-    $(NTCAM_PATH)/proprietary/system_ext/lib64/libnelib.so:$(TARGET_COPY_OUT_SYSTEM_EXT)/lib64/libnelib.so \
     $(NTCAM_PATH)/proprietary/vendor/etc/camera/NdotFont/Ndot-55.otf:$(TARGET_COPY_OUT_VENDOR)/etc/camera/NdotFont/Ndot-55.otf \
     $(NTCAM_PATH)/proprietary/vendor/etc/camera/Robotofont/Roboto-55.ttf:$(TARGET_COPY_OUT_VENDOR)/etc/camera/Robotofont/Roboto-55.ttf \
     $(NTCAM_PATH)/proprietary/vendor/etc/camera/SansCJKFont/NotoSansCJK.ttc:$(TARGET_COPY_OUT_VENDOR)/etc/camera/SansCJKFont/NotoSansCJK.ttc \
@@ -214,6 +214,44 @@ cc_prebuilt_library_shared {
     compile_multilib: "64",
     prefer: true,
     system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libnelib",
+    owner: "nothing",
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libnelib.so",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libnelib_vendor",
+    owner: "nothing",
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libnelib.so",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    soc_specific: true,
 }
 
 cc_prebuilt_library_shared {

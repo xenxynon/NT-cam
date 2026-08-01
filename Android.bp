@@ -8,6 +8,7 @@
 soong_namespace {
     imports: [
         "hardware/nothing",
+        "vendor/nothing/asteroids",
     ],
 }
 
@@ -158,6 +159,47 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
+    name: "libnelib",
+    owner: "nothing",
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libnelib.so",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libnelib_vendor",
+    owner: "nothing",
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libnelib.so",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    soc_specific: true,
+}
+
+
+
+
+cc_prebuilt_library_shared {
     name: "vendor.noth.hardware.camera-V1-ndk",
     owner: "nothing",
     strip: {
@@ -231,8 +273,12 @@ cc_prebuilt_binary {
     compile_multilib: "64",
     prefer: true,
     soc_specific: true,
+    relative_install_path: "hw",
     init_rc: [
         "proprietary/vendor/etc/init/vendor.noth.hardware.camera-service.rc",
+    ],
+    vintf_fragments: [
+        "proprietary/vendor/etc/vintf/manifest/vendor.noth.hardware.camera-service.xml",
     ],
 }
 
