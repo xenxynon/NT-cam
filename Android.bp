@@ -467,6 +467,15 @@ android_app_import {
     system_ext_specific: true,
 }
 
+dex_import {
+    name: "androidx.camera.extensions.impl.advanced",
+    owner: "nothing",
+    jars: [
+        "proprietary/system_ext/framework/androidx.camera.extensions.impl.advanced.jar",
+    ],
+    system_ext_specific: true,
+}
+
 prebuilt_etc_xml {
     name: "vendor.noth.hardware.camera-service.xml",
     owner: "nothing",
@@ -507,5 +516,21 @@ cc_prebuilt_binary {
     },
     prefer: true,
     relative_install_path: "hw",
+    soc_specific: true,
+}
+
+sh_binary {
+    name: "init.kernel.post_boot-memory",
+    owner: "nothing",
+    src: "proprietary/vendor/bin/init.kernel.post_boot-memory.sh",
+    filename: "init.kernel.post_boot-memory.sh",
+    soc_specific: true,
+}
+
+sh_binary {
+    name: "init.kernel.post_boot-volcano_default_4_3_1",
+    owner: "nothing",
+    src: "proprietary/vendor/bin/init.kernel.post_boot-volcano_default_4_3_1.sh",
+    filename: "init.kernel.post_boot-volcano_default_4_3_1.sh",
     soc_specific: true,
 }
